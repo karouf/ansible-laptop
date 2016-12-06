@@ -5,3 +5,12 @@
   apt: name="{{item}}" state=present
   with_items:
     - chromium-browser
+    - powertop
+    - tlp
+    - tlp-rdw
+
+- name: Make sure services are started
+  become: true
+  service:
+    name: tlp
+    state: started
