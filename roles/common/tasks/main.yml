@@ -8,6 +8,7 @@
     - powertop
     - tlp
     - tlp-rdw
+    - vim
 
 - name: Make sure services are started
   become: true
