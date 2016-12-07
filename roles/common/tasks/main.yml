@@ -14,3 +14,8 @@
   service:
     name: tlp
     state: started
+
+- name: Create a directory to put all the codes
+  file:
+    path: "{{ lookup('env', 'HOME') }}/code"
+    state: directory
