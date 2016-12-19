@@ -23,3 +23,9 @@
   file:
     path: "{{ lookup('env', 'HOME') }}/code"
     state: directory
+
+- name: Install some node.js packages globally
+  become: true
+  npm:
+    name: karma-cli
+    global: yes
