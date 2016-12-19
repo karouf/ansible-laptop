@@ -9,6 +9,9 @@
     - tlp
     - tlp-rdw
     - vim
+    - nodejs
+    - nodejs-legacy
+    - npm
 
 - name: Make sure services are started
   become: true
