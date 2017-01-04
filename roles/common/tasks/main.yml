@@ -13,6 +13,7 @@
     - nodejs
     - nodejs-legacy
     - npm
+    - virtualbox
 
 - name: Make sure services are started
   become: true
