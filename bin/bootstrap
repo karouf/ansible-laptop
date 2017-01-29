@@ -1,3 +1,5 @@
 #!/usr/bin/env sh
 
-sudo apt-get install ansible
+sudo apt-get install python-pip
+sudo pip install ansible
+sudo pip install --upgrade pip
