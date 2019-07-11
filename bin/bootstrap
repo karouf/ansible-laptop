@@ -3,4 +3,4 @@
 sudo apt-get install python-pip
 sudo pip install ansible
 sudo pip install --upgrade pip
-ansible-galaxy install -r requirements --roles-path vendor
+ansible-galaxy install -r requirements.yml --roles-path vendor
