@@ -4,6 +4,3 @@
   connection: local
   roles:
     - common
-    - { role: rvm_io.ruby,
-        rvm1_user: "{{ lookup('env', 'USER') }}"
-      }

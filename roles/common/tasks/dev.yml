@@ -1,0 +1,23 @@
+---
+
+- include_role:
+    name: rvm.ruby,
+  vars:
+    rvm1_user: "{{ lookup('env', 'USER') }}"
+
+- name: Install dev packages
+  become: true
+  package:
+    name: npm
+    state: present
+
+- name: Create a directory to put all the codes
+  file:
+    path: "{{ lookup('env', 'HOME') }}/code"
+    state: directory
+
+- name: Install some node.js packages globally
+  become: true
+  npm:
+    name: karma-cli
+    global: yes

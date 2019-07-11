@@ -1,33 +1,22 @@
 ---
 
-- name: Install packages
+- name: Install common packages
   become: true
-  apt: name="{{item}}" state=present
-  with_items:
-    - chromium-browser
-    - firefox
-    - powertop
-    - tlp
-    - tlp-rdw
-    - vim
-    - nodejs
-    - nodejs-legacy
-    - npm
-    - virtualbox
+  package:
+    name: "{{ common_packages }}"
+    state: present
+
+- name: Include distro specific vars
+  include_vars: "{{ ansible_distribution }}.yml"
+
+- name: Install distro specific packages
+  become: true
+  package:
+    name: "{{ distro_packages }}"
+    state: present
 
 - name: Make sure services are started
   become: true
   service:
     name: tlp
     state: started
-
-- name: Create a directory to put all the codes
-  file:
-    path: "{{ lookup('env', 'HOME') }}/code"
-    state: directory
-
-- name: Install some node.js packages globally
-  become: true
-  npm:
-    name: karma-cli
-    global: yes
