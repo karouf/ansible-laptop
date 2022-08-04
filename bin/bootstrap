@@ -3,6 +3,6 @@
 sudo apt-get install python-pip virtualenv
 virtualenv .venv
 source .venv/bin/activate
-pip install ansible
 pip install --upgrade pip
+pip install ansible
 ansible-galaxy install -r requirements.yml --roles-path vendor
