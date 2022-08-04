@@ -1,3 +1,19 @@
 #!/usr/bin/env sh
 
-ansible-playbook -i "127.0.0.1" laptop.yml --ask-become-pass
+uid=$(id -u)
+
+which sudo
+sudo=$?
+
+if [ $uid = 0 ]
+then
+  ansible-playbook -i "127.0.0.1" laptop.yml
+else
+  if [ $sudo = 0 ]
+  then
+    ansible-playbook -i "127.0.0.1" laptop.yml --ask-become-pass
+  else
+    echo "Can't converge since you're not root nor have sudo access"
+    exit 1
+  fi
+fi
