@@ -1,6 +1,23 @@
 #!/usr/bin/env sh
 
-sudo apt-get install python-pip virtualenv
+uid=$(id -u)
+
+which sudo
+sudo=$?
+
+if [ $uid = 0 ]
+then
+  apt-get install -y python3-pip virtualenv
+else
+  if [ $sudo = 0 ]
+  then
+    sudo apt-get install -y python3-pip virtualenv
+  else
+    echo "Can't bootstrap since you're not root nor have sudo access"
+    exit 1
+  fi
+fi
+
 virtualenv .venv
 source .venv/bin/activate
 pip install --upgrade pip
