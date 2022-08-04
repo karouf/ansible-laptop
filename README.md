@@ -20,3 +20,8 @@ To run Ansible:
 ```bash
 $ ./bin/converge
 ```
+
+## Supported distributions
+
+This has been tested on:
+- Debian 11
