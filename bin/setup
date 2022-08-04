@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+uid=$(id -u)
+
+which git
+git=$?
+
+which sudo
+sudo=$?
+
+if [ $git != 0 ]
+then
+  if [ $uid = "0" ]
+  then
+    apt update && apt install -y git
+  else
+    if [ $sudo = 0 ]
+    then
+      sudo apt update && sudo apt install -y git
+    else
+      echo "Can't bootstrap since you're not root nor have sudo access"
+      exit 1
+    fi
+  fi
+fi
+
+git clone https://github.com/karouf/ansible-laptop.git
+
+cd ansible-laptop
+
+./bin/bootstrap && ./bin/converge
