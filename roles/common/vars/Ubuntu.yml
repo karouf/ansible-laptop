@@ -1,5 +1,5 @@
 ---
 
 distro_packages:
-  - chromium
+  - chromium-browser
   - firefox
