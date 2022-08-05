@@ -33,3 +33,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run the setup script
         run: ./bin/setup
+      
+      - name: Check if vim is installed
+        run: which vim
