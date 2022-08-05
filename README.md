@@ -25,3 +25,4 @@ $ ./bin/converge
 
 This has been tested on:
 - Debian 11
+- Ubuntu 22.04
